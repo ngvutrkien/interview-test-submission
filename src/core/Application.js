@@ -4,8 +4,11 @@ class Application extends PIXI.Container
     {
         super();
 
-        this.ticker = new PIXI.Ticker();
-        this.renderer = new PIXI.Renderer({ width: window.innerWidth, height: window.innerHeight });
+        this.ticker = PIXI.Ticker.shared;
+        this.renderer = PIXI.autoDetectRenderer({
+            width: window.innerWidth,
+            height: window.innerHeight
+        });
 
         this.interactive = true;
         this.on("pointerdown", this.TouchHandler);
@@ -20,7 +23,6 @@ class Application extends PIXI.Container
     Init(gameLoop)
     {
         this.ticker.add(gameLoop);
-        this.ticker.start();
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
