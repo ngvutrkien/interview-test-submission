@@ -1,12 +1,11 @@
 const Picture = require('./Picture');
+const Drawing = require('./Drawing');
 
 class GameMgr extends PIXI.Container
 {
     constructor()
     {
         super();
-
-        this.drawing = new PIXI.Container();
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -16,7 +15,7 @@ class GameMgr extends PIXI.Container
         if (this.children.length == 0)
         {
             this.addChild(Picture);
-            this.addChild(this.drawing);
+            this.addChild(Drawing);
         }
 
         Picture.InitPicture();
@@ -32,20 +31,7 @@ class GameMgr extends PIXI.Container
 
     TouchHandler(event)
     {
-        if (Input.IsTouchMove(event))
-        {
-            let x = Input.touchX + Input.touchDX;
-            let y = Input.touchY + Input.touchDY;
-            let circle = new PIXI.Graphics()
-                .beginFill()
-                .drawCircle(x, y, 10)
-                .endFill()
-            this.drawing.addChild(circle);
-        }
-        else if (Input.IsTouchUp(event))
-        {
-            this.drawing.removeChildren();
-        }
+        Drawing.TouchHandler(event);
     }
 };
 
