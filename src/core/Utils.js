@@ -5,7 +5,7 @@ class Utils
         loader.baseUrl = './images/';
         assets.forEach((name) =>
         {
-            loader.add(name, `${name}.jpg`);
+            loader.add(name, `${name}.png`);
         });
         loader.onProgress.add(onProgressCallback);
         loader.onError.add(onErrorCallback);

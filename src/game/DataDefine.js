@@ -3,10 +3,7 @@ class DataDefine
     constructor()
     {
         this.assets = [
-            'bee',
-            'pig',
-            'monkey',
-            'strawberry',
+            'bee'
         ];
     }
 };
