@@ -3,10 +3,10 @@ class Utils
     LoadAssets(assets, onProgressCallback, onErrorCallback, onCompleteCallback, loader = PIXI.Loader.shared)
     {
         loader.baseUrl = './images/';
-        assets.forEach((name) =>
+        for (let [name, url] of Object.entries(assets))
         {
-            loader.add(name, `${name}.png`);
-        });
+            loader.add(name, url);
+        }
         loader.onProgress.add(onProgressCallback);
         loader.onError.add(onErrorCallback);
         loader.onComplete.add(onCompleteCallback);
