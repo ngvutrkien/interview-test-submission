@@ -4,27 +4,35 @@ class StatePreLoad extends PIXI.Container
     {
         super();
 
+        this.isLoaded = false;
+
+        this.background = new PIXI.Graphics();
+        this.background.clear();
+        this.background.beginFill();
+        this.background.drawRect(0, 0, APP.GetWidth(), APP.GetHeight());
+        this.background.endFill();
+
         this.tutorialTxt = new PIXI.Text(
             "CONNECT THE DOTS TO COMPLETE THE PICTURE",
             {
                 align: "center",
                 fontFamily: "Arial",
-                fontSize: 50,
-                fill: "#ffffff"
+                fontSize: 30,
+                fill: "#ffffff",
+                wordWrap: true,
+                wordWrapWidth: APP.GetWidth() * 0.85
             }
         );
 
         this.playTxt = new PIXI.Text(
-            "Tap to continue",
+            "loading...",
             {
                 align: "center",
                 fontFamily: "Arial",
-                fontSize: 35,
+                fontSize: 25,
                 fill: "#ffffff"
             }
         );
-
-        this.playTxt.visible = false;
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -33,11 +41,12 @@ class StatePreLoad extends PIXI.Container
     {
         APP.AddChild(this);
 
+        this.addChild(this.background);
         this.addChild(this.tutorialTxt);
         this.addChild(this.playTxt);
 
         this.tutorialTxt.anchor.set(0.5);
-        this.tutorialTxt.position.set(APP.GetWidth() / 2, APP.GetHeight() / 2);
+        this.tutorialTxt.position.set(APP.GetWidth() / 2, APP.GetHeight() * 1 / 3);
 
         this.playTxt.anchor.set(0.5);
         this.playTxt.position.set(APP.GetWidth() / 2, APP.GetHeight() * 2 / 3);
@@ -80,7 +89,12 @@ class StatePreLoad extends PIXI.Container
     LoadCompleteHandler()
     {
         console.log("LoadCompleteHandler");
-        this.playTxt.visible = true;
+
+        this.playTxt.text = "tap to continue";
+
+        this.isLoaded = true;
+
+        this.interactive = true;
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -103,7 +117,13 @@ class StatePreLoad extends PIXI.Container
     {
         switch (event.target)
         {
-
+            case this:
+                if (Input.IsTouchUp(event) && this.isLoaded)
+                {
+                    this.interactive = false;
+                    console.log("NEXT STATE");
+                }
+                break;
         }
     }
 };

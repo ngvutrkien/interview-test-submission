@@ -8,9 +8,9 @@ class Application extends PIXI.Container
         this.renderer = new PIXI.Renderer({ width: window.innerWidth, height: window.innerHeight });
 
         this.interactive = true;
-        this.on("pointerup", this.TouchHandler);
         this.on("pointerdown", this.TouchHandler);
         this.on("pointermove", this.TouchHandler);
+        this.on("pointerup", this.TouchHandler);
 
         document.body.appendChild(this.renderer.view);
     }
@@ -79,9 +79,9 @@ class Application extends PIXI.Container
     {
         if (StateManager.stateNext == null)
         {
-            // Input.Update(event);
+            Input.Update(event);
             StateManager.TouchHandler(event);
-            // Input.Reset(event);
+            Input.Reset(event);
         }
     }
 };
