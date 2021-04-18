@@ -36,6 +36,7 @@ class GameMgr extends PIXI.Container
     TouchHandler(event)
     {
         Drawing.TouchHandler(event);
+        Dots.TouchHandler(event);
     }
 };
 

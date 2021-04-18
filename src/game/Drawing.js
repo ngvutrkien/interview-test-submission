@@ -7,15 +7,17 @@ class Drawing extends PIXI.Container
 
     TouchHandler(event)
     {
+        let touch = {
+            x: Input.touchX + Input.touchDX,
+            y: Input.touchY + Input.touchDY
+        };
+
         if (Input.IsTouchMove(event))
         {
-            let x = Input.touchX + Input.touchDX;
-            let y = Input.touchY + Input.touchDY;
             let circle = new PIXI.Graphics()
                 .beginFill()
-                .drawCircle(x, y, 10)
+                .drawCircle(touch.x, touch.y, 10)
                 .endFill();
-            console.log('X:' + x + ' Y: ' + y);
             this.addChild(circle);
         }
         else if (Input.IsTouchUp(event))
