@@ -1,17 +1,20 @@
 global.PIXI = require('pixi.js');
 
 global.APP = require('./core/Application');
+global.StateManager = require('./core/StateManager');
+global.Utils = require('./core/Utils');
+global.DataDefine = require('./game/DataDefine');
 
 window.main = function ()
 {
-    // StateManager.PushState(StatePreLoad);
+    global.StatePreLoad = require('./states/StatePreLoad');
+    StateManager.PushState(StatePreLoad);
     APP.Init(GameLoop);
 };
 
 function GameLoop(deltaTime)
 {
     deltaTime = deltaTime / (60 * APP.ticker.speed);
-    console.log(deltaTime);
-    // APP.Update(deltaTime);
-    // APP.Render();
+    APP.Update(deltaTime);
+    APP.Render();
 };
