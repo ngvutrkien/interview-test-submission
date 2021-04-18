@@ -6,12 +6,13 @@ global.Utils = require('./core/Utils');
 global.Input = require('./core/Input');
 
 global.DataDefine = require('./game/DataDefine');
+global.StatePreLoad = require('./states/StatePreLoad');
+global.StateIngame = require('./states/StateIngame');
 
 window.main = function ()
 {
-    global.StatePreLoad = require('./states/StatePreLoad');
-    StateManager.PushState(StatePreLoad);
     APP.Init(GameLoop);
+    StateManager.PushState(StatePreLoad);
 };
 
 function GameLoop(deltaTime)

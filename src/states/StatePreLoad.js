@@ -41,9 +41,12 @@ class StatePreLoad extends PIXI.Container
     {
         APP.AddChild(this);
 
-        this.addChild(this.background);
-        this.addChild(this.tutorialTxt);
-        this.addChild(this.playTxt);
+        if (this.children.length == 0)
+        {
+            this.addChild(this.background);
+            this.addChild(this.tutorialTxt);
+            this.addChild(this.playTxt);
+        }
 
         this.tutorialTxt.anchor.set(0.5);
         this.tutorialTxt.position.set(APP.GetWidth() / 2, APP.GetHeight() * 1 / 3);
@@ -99,20 +102,6 @@ class StatePreLoad extends PIXI.Container
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    UpdatePreload(deltaTime)
-    {
-
-    }
-
-    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-    NextState()
-    {
-
-    }
-
-    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
     TouchHandler(event)
     {
         switch (event.target)
@@ -121,7 +110,7 @@ class StatePreLoad extends PIXI.Container
                 if (Input.IsTouchUp(event) && this.isLoaded)
                 {
                     this.interactive = false;
-                    console.log("NEXT STATE");
+                    StateManager.SwitchState(StateIngame);
                 }
                 break;
         }
