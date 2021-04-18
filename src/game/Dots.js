@@ -12,7 +12,7 @@ class Dots extends PIXI.Container
         {
             let rect = new PIXI.Graphics()
                 .beginFill(0xFF0000)
-                .drawRect(APP.GetWidth() / 2 + dot.x, APP.GetHeight() / 2 + dot.y, 10, 10)
+                .drawRect(APP.GetWidth() / 2 + dot.x, APP.GetHeight() / 2 + dot.y, 15, 15)
                 .endFill();
             this.addChild(rect);
         });
