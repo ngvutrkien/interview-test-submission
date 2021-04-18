@@ -84,5 +84,6 @@ class Application extends PIXI.Container
             Input.Reset(event);
         }
     }
-}
+};
+
 module.exports = new Application();
