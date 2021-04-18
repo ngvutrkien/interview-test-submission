@@ -1,20 +1,8 @@
-const Picture = require('./Picture');
-
 class Drawing extends PIXI.Container
 {
     constructor()
     {
         super();
-    }
-
-    AddChild(child)
-    {
-        this.addChild(child);
-    }
-
-    RemoveChildren()
-    {
-        this.removeChildren();
     }
 
     TouchHandler(event)
@@ -27,11 +15,12 @@ class Drawing extends PIXI.Container
                 .beginFill()
                 .drawCircle(x, y, 10)
                 .endFill();
-            this.AddChild(circle);
+            console.log('X:' + x + ' Y: ' + y);
+            this.addChild(circle);
         }
         else if (Input.IsTouchUp(event))
         {
-            this.RemoveChildren();
+            this.removeChildren();
         }
     }
 };

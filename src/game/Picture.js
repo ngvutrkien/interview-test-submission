@@ -11,16 +11,16 @@ class Picture extends PIXI.Container
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    InitPicture()
+    InitPicture(name)
     {
         if (this.children.length == 0)
         {
             this.addChild(this.frame);
         }
 
-        this.sheet = new PIXI.BaseTexture.from(PIXI.Loader.shared.resources.bee.url);
+        this.sheet = new PIXI.BaseTexture.from(PIXI.Loader.shared.resources[name].url);
 
-        let data = DataDefine.spriteSheets.bee.cutted;
+        let data = DataDefine.spriteSheets[name].cutted;
         this.textures.cutted = new PIXI.Texture(this.sheet, new PIXI.Rectangle(data.x, data.y, data.w, data.h));
 
         this.frame.texture = this.textures.cutted;
