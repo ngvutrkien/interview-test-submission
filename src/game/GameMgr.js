@@ -1,46 +1,39 @@
-const GameMgr = require('../game/GameMgr');
-
-class StateIngame extends PIXI.Container
+class GameMgr extends PIXI.Container
 {
     constructor()
     {
         super();
+
+        this.frame = new PIXI.Sprite();
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     Load()
     {
-        APP.AddChild(this);
-
         if (this.children.length == 0)
         {
-            this.addChild(GameMgr);
+            this.addChild(this.frame);
         }
 
-        GameMgr.Load();
-    }
-
-    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-    Unload()
-    {
-        APP.RemoveChild(this);
+        this.frame.texture = PIXI.Loader.shared.resources.bee.texture;
+        this.frame.anchor.set(0.5);
+        this.frame.position.set(APP.GetWidth() / 2, APP.GetHeight() / 2);
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     Update(deltaTime)
     {
-        GameMgr.Update(deltaTime);
+
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     TouchHandler(event)
     {
-        GameMgr.TouchHandler(event);
+
     }
 };
 
-module.exports = new StateIngame();
+module.exports = new GameMgr();
