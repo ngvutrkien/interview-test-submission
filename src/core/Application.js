@@ -79,9 +79,9 @@ class Application extends PIXI.Container
     {
         if (StateManager.stateNext == null)
         {
-            Input.Update(event);
+            // Input.Update(event);
             StateManager.TouchHandler(event);
-            Input.Reset(event);
+            // Input.Reset(event);
         }
     }
 };

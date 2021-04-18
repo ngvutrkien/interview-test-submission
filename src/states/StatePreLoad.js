@@ -3,6 +3,28 @@ class StatePreLoad extends PIXI.Container
     constructor()
     {
         super();
+
+        this.tutorialTxt = new PIXI.Text(
+            "CONNECT THE DOTS TO COMPLETE THE PICTURE",
+            {
+                align: "center",
+                fontFamily: "Arial",
+                fontSize: 50,
+                fill: "#ffffff"
+            }
+        );
+
+        this.playTxt = new PIXI.Text(
+            "Tap to continue",
+            {
+                align: "center",
+                fontFamily: "Arial",
+                fontSize: 35,
+                fill: "#ffffff"
+            }
+        );
+
+        this.playTxt.visible = false;
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -10,6 +32,15 @@ class StatePreLoad extends PIXI.Container
     Load()
     {
         APP.AddChild(this);
+
+        this.addChild(this.tutorialTxt);
+        this.addChild(this.playTxt);
+
+        this.tutorialTxt.anchor.set(0.5);
+        this.tutorialTxt.position.set(APP.GetWidth() / 2, APP.GetHeight() / 2);
+
+        this.playTxt.anchor.set(0.5);
+        this.playTxt.position.set(APP.GetWidth() / 2, APP.GetHeight() * 2 / 3);
 
         Utils.LoadAssets(DataDefine.assets, this.LoadProgressHandler.bind(this), this.LoadErrorHandler.bind(this), this.LoadCompleteHandler.bind(this));
     }
@@ -49,7 +80,7 @@ class StatePreLoad extends PIXI.Container
     LoadCompleteHandler()
     {
         console.log("LoadCompleteHandler");
-        this.isLoaded = true;
+        this.playTxt.visible = true;
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
