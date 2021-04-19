@@ -5,30 +5,41 @@ class DataDefine
         this.images = {
             bee: 'bee.png',
             monkey: 'monkey.png',
+            strawberry: 'strawberry.png',
         };
 
         this.spriteSheets = {
             bee: {
                 cutted: { x: 588.5, y: 0, w: 588.5, h: 500 },
-                full: { x: 0, y: 0, w: 588.5, h: 500 }
+                full: { x: 0, y: 0, w: 588.5, h: 500 },
             },
             monkey: {
                 cutted: { x: 0, y: 0, w: 588.5, h: 500 },
-                full: { x: 588.5, y: 0, w: 588.5, h: 500 }
-            }
+                full: { x: 588.5, y: 0, w: 588.5, h: 500 },
+            },
+            strawberry: {
+                cutted: { x: 0, y: 0, w: 629.5, h: 500 },
+                full: { x: 629.5, y: 0, w: 629.5, h: 500 },
+            },
         };
 
         this.dots = {
             bee: [
                 { x: 77, y: -163, size: 30 },
                 { x: 155, y: -150, size: 30 },
-                { x: 210, y: -75, size: 30 }
+                { x: 210, y: -75, size: 30 },
             ],
             monkey: [
                 { x: 147, y: -123, size: 30 },
                 { x: 220, y: -117, size: 40 },
-                { x: 195, y: -40, size: 30 }
-            ]
+                { x: 195, y: -40, size: 30 },
+            ],
+            strawberry: [
+                { x: 70, y: -153, size: 15 },
+                { x: 95, y: -133, size: 25 },
+                { x: 145, y: -105, size: 25 },
+                { x: 180, y: -95, size: 15 },
+            ],
         };
     }
 };

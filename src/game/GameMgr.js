@@ -30,7 +30,7 @@ class GameMgr extends PIXI.Container
             this.addChild(Drawing);
         }
 
-        let name = 'monkey'; // Random picture name
+        let name = 'strawberry'; // Random picture name
         Picture.InitPicture(name);
         Dots.InitDots(name);
 
