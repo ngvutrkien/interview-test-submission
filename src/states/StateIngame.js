@@ -35,6 +35,11 @@ class StateIngame extends PIXI.Container
         GameMgr.Update(deltaTime);
     }
 
+    EndGame()
+    {
+        console.log('END GAME');
+    }
+
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     TouchHandler(event)

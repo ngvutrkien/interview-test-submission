@@ -7,6 +7,16 @@ class GameMgr extends PIXI.Container
     constructor()
     {
         super();
+
+        let n = 0;
+        this.STATE = {
+            NONE: n++,
+            GAME: n++,
+            WAIT_END: n++,
+            END: n++,
+        };
+
+        this.state = this.STATE.NONE;
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -20,19 +30,49 @@ class GameMgr extends PIXI.Container
             this.addChild(Drawing);
         }
 
-        let name = 'bee';
+        let name = 'bee'; // Random picture name
         Picture.InitPicture(name);
         Dots.InitDots(name);
+
+        this.SetState(this.STATE.GAME);
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    SetState(state)
+    {
+        this.state = state;
+        switch (this.state)
+        {
+            case this.STATE.WAIT_END:
+                setTimeout(() =>
+                {
+                    this.SetState(this.STATE.END);
+                }, 1000);
+                break;
+            case this.STATE.END:
+                StateIngame.EndGame();
+                this.SetState(this.STATE.NONE);
+                break;
+            default:
+                break;
+        }
+    }
+
     Update(deltaTime)
     {
-        if (Dots.isFinished)
+        switch (this.state)
         {
-            Drawing.ClearDrawing();
-            Picture.ShowPictureFull();
+            case this.STATE.GAME:
+                if (Dots.isFinished)
+                {
+                    Drawing.ClearDrawing();
+                    Picture.ShowPictureFull();
+                    this.SetState(this.STATE.WAIT_END);
+                }
+                break;
+            default:
+                break;
         }
     }
 
@@ -40,8 +80,15 @@ class GameMgr extends PIXI.Container
 
     TouchHandler(event)
     {
-        Dots.TouchHandler(event);
-        Drawing.TouchHandler(event);
+        switch (this.state)
+        {
+            case this.STATE.GAME:
+                Dots.TouchHandler(event);
+                Drawing.TouchHandler(event);
+                break;
+            default:
+                break;
+        }
     }
 };
 
