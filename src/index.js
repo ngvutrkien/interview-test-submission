@@ -8,6 +8,7 @@ global.Input = require('./core/Input');
 global.DataDefine = require('./game/DataDefine');
 global.StatePreLoad = require('./states/StatePreLoad');
 global.StateIngame = require('./states/StateIngame');
+global.StateIngame = require('./states/StateGameOver');
 
 window.main = function ()
 {

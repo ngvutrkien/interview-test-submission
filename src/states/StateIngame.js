@@ -37,7 +37,7 @@ class StateIngame extends PIXI.Container
 
     EndGame()
     {
-        console.log('END GAME');
+        StateManager.SwitchState(StateGameOver);
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
