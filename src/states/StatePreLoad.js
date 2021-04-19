@@ -13,7 +13,7 @@ class StatePreLoad extends PIXI.Container
         this.background.endFill();
 
         this.tutorialTxt = new PIXI.Text(
-            "CONNECT THE DOTS TO COMPLETE THE PICTURE",
+            "DRAW THE MISSING PART TO COMPLETE THE PICTURE",
             {
                 align: "center",
                 fontFamily: "Arial",
