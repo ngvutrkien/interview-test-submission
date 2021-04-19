@@ -6,7 +6,6 @@ global.Utils = require('./core/Utils');
 global.Input = require('./core/Input');
 global.Resource = require('./core/Resource');
 
-global.DataDefine = require('./game/DataDefine');
 global.StatePreLoad = require('./states/StatePreLoad');
 global.StateIngame = require('./states/StateIngame');
 global.StateGameOver = require('./states/StateGameOver');
@@ -16,7 +15,7 @@ window.main = function ()
     Resource.Load('images/settings.json', 'json')
         .then((response) =>
         {
-            console.log(response);
+            global.DataDefine = response;
             APP.Init(GameLoop);
             StateManager.PushState(StatePreLoad);
         })
