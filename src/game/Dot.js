@@ -4,6 +4,9 @@ class Dot extends PIXI.Container
     {
         super();
 
+        this.next = null;
+        this.prev = null;
+
         this.rect = new PIXI.Graphics()
             .beginFill(0xFF0000)
             .drawRect(0, 0, dotSize, dotSize)
