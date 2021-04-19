@@ -37,6 +37,13 @@ class GameMgr extends PIXI.Container
         this.SetState(this.STATE.GAME);
     }
 
+    Unload()
+    {
+        Picture.Unload();
+        Dots.Unload();
+        Drawing.Unload();
+    }
+
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     SetState(state)

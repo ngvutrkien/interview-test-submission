@@ -31,6 +31,12 @@ class Dots extends PIXI.Container
         this.isFinished = false;
     }
 
+    Unload()
+    {
+        this.UnlinkAllNodes();
+        this.removeChildren();
+    }
+
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     // Linked List
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -65,6 +71,20 @@ class Dots extends PIXI.Container
             this.head = node;
             this.tail = node;
         }
+    }
+
+    UnlinkAllNodes()
+    {
+        let curNode = this.head;
+        while (curNode)
+        {
+            let temp = curNode.next;
+            curNode.prev = null;
+            curNode.next = null;
+            curNode = temp;
+        }
+        this.head = null;
+        this.tail = null;
     }
 
     PrintList()

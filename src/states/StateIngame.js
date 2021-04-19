@@ -12,7 +12,6 @@ class StateIngame extends PIXI.Container
     Load()
     {
         APP.AddChild(this);
-
         if (this.children.length == 0)
         {
             this.addChild(GameMgr);
@@ -25,6 +24,7 @@ class StateIngame extends PIXI.Container
 
     Unload()
     {
+        GameMgr.Unload();
         APP.RemoveChild(this);
     }
 

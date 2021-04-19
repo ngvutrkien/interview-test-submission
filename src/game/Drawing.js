@@ -5,6 +5,16 @@ class Drawing extends PIXI.Container
         super();
     }
 
+    Unload()
+    {
+        this.ClearDrawing();
+    }
+
+    ClearDrawing()
+    {
+        this.removeChildren();
+    }
+
     TouchHandler(event)
     {
         let touch = {
@@ -24,11 +34,6 @@ class Drawing extends PIXI.Container
         {
             this.removeChildren();
         }
-    }
-
-    ClearDrawing()
-    {
-        this.removeChildren();
     }
 };
 

@@ -29,6 +29,11 @@ class Picture extends PIXI.Container
         this.ShowPictureCutted();
     }
 
+    Unload()
+    {
+        this.sheet.destroy();
+    }
+
     ShowPictureCutted()
     {
         this.frame.texture = this.textures.cutted;
