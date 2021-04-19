@@ -54,7 +54,7 @@ class StatePreLoad extends PIXI.Container
         this.playTxt.anchor.set(0.5);
         this.playTxt.position.set(APP.GetWidth() / 2, APP.GetHeight() * 2 / 3);
 
-        Utils.LoadAssets(DataDefine.images, this.LoadProgressHandler.bind(this), this.LoadErrorHandler.bind(this), this.LoadCompleteHandler.bind(this));
+        Resource.LoadAssets(DataDefine.images, this.LoadProgressHandler.bind(this), this.LoadErrorHandler.bind(this), this.LoadCompleteHandler.bind(this));
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
