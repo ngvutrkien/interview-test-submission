@@ -39,6 +39,8 @@ class StateGameOver extends PIXI.Container
 
         this.replayTxt.anchor.set(0.5);
         this.replayTxt.position.set(APP.GetWidth() / 2, APP.GetHeight() / 2);
+
+        this.interactive = true;
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
