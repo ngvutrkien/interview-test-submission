@@ -11,12 +11,14 @@ class GameMgr extends PIXI.Container
         let n = 0;
         this.STATE = {
             NONE: n++,
+            RESET: n++,
             GAME: n++,
             WAIT_END: n++,
             END: n++,
         };
-
         this.state = this.STATE.NONE;
+
+        this.imgNames = null;
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -26,14 +28,11 @@ class GameMgr extends PIXI.Container
         if (this.children.length == 0)
         {
             this.addChild(Picture);
-            this.addChild(Dots); // Unrem this to show guilding dots.
+            // this.addChild(Dots); // Unrem this to show guilding dots.
             this.addChild(Drawing);
         }
-
-        let name = 'strawberry'; // Random picture name
-        Picture.InitPicture(name);
-        Dots.InitDots(name);
-
+        this.imgNames = Object.keys(DataDefine.images);
+        this.Reset();
         this.SetState(this.STATE.GAME);
     }
 
@@ -44,6 +43,16 @@ class GameMgr extends PIXI.Container
         Drawing.Unload();
     }
 
+    Reset()
+    {
+        let random = Math.floor(Math.random() * (this.imgNames.length - 1));
+        let name = this.imgNames[random];
+        this.imgNames.splice(random, 1);
+
+        Picture.InitPicture(name);
+        Dots.InitDots(name);
+    }
+
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     SetState(state)
@@ -51,6 +60,19 @@ class GameMgr extends PIXI.Container
         this.state = state;
         switch (this.state)
         {
+            case this.STATE.RESET:
+                if (this.imgNames.length == 0)
+                {
+                    this.SetState(this.STATE.WAIT_END);
+                    break;
+                }
+                setTimeout(() =>
+                {
+                    this.Unload();
+                    this.Reset();
+                    this.SetState(this.STATE.GAME);
+                }, 1000);
+                break;
             case this.STATE.WAIT_END:
                 setTimeout(() =>
                 {
@@ -75,7 +97,7 @@ class GameMgr extends PIXI.Container
                 {
                     Drawing.ClearDrawing();
                     Picture.ShowPictureFull();
-                    this.SetState(this.STATE.WAIT_END);
+                    this.SetState(this.STATE.RESET);
                 }
                 break;
             default:
