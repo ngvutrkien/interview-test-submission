@@ -16,7 +16,7 @@ class Drawing extends PIXI.Container
         {
             let circle = new PIXI.Graphics()
                 .beginFill()
-                .drawCircle(touch.x, touch.y, 10)
+                .drawCircle(touch.x, touch.y, 7)
                 .endFill();
             this.addChild(circle);
         }

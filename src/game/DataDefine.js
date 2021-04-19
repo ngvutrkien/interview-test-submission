@@ -8,8 +8,8 @@ class DataDefine
 
         this.spriteSheets = {
             bee: {
-                cutted: { x: 588, y: 0, w: 588, h: 500 },
-                full: { x: 0, y: 0, w: 588, h: 500 }
+                cutted: { x: 588.5, y: 0, w: 588.5, h: 500 },
+                full: { x: 0, y: 0, w: 588.5, h: 500 }
             }
         };
 
