@@ -25,6 +25,11 @@ class Drawing extends PIXI.Container
             this.removeChildren();
         }
     }
+
+    ClearDrawing()
+    {
+        this.removeChildren();
+    }
 };
 
 module.exports = new Drawing();

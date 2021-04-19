@@ -11,6 +11,8 @@ class Dots extends PIXI.Container
         this.tail = null;
         this.currentNode = null;
         this.direction = 0;
+
+        this.isFinished = false;
     }
 
     InitDots(name)
@@ -26,8 +28,7 @@ class Dots extends PIXI.Container
             this.AddToTail(node);
         });
 
-        // Linked List
-        // this.PrintList();
+        this.isFinished = false;
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -80,6 +81,8 @@ class Dots extends PIXI.Container
 
     TouchHandler(event)
     {
+        if (this.isFinished) return;
+
         let touch = {
             x: Input.touchX + Input.touchDX,
             y: Input.touchY + Input.touchDY
@@ -115,6 +118,10 @@ class Dots extends PIXI.Container
                 if (Utils.CollisionPointRect(touch.x, touch.y, rect))
                 {
                     this.currentNode = this.direction > 0 ? this.currentNode.next : this.currentNode.prev;
+                    if (!this.currentNode) // Reach end node. Should finish game now
+                    {
+                        this.isFinished = true;
+                    }
                 }
             }
         }

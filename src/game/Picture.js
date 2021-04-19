@@ -23,7 +23,22 @@ class Picture extends PIXI.Container
         let data = DataDefine.spriteSheets[name].cutted;
         this.textures.cutted = new PIXI.Texture(this.sheet, new PIXI.Rectangle(data.x, data.y, data.w, data.h));
 
+        data = DataDefine.spriteSheets[name].full;
+        this.textures.full = new PIXI.Texture(this.sheet, new PIXI.Rectangle(data.x, data.y, data.w, data.h));
+
+        this.ShowPictureCutted();
+    }
+
+    ShowPictureCutted()
+    {
         this.frame.texture = this.textures.cutted;
+        this.frame.anchor.set(0.5);
+        this.frame.position.set(APP.GetWidth() / 2, APP.GetHeight() / 2);
+    }
+
+    ShowPictureFull()
+    {
+        this.frame.texture = this.textures.full;
         this.frame.anchor.set(0.5);
         this.frame.position.set(APP.GetWidth() / 2, APP.GetHeight() / 2);
     }

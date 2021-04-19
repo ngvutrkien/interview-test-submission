@@ -16,7 +16,7 @@ class GameMgr extends PIXI.Container
         if (this.children.length == 0)
         {
             this.addChild(Picture);
-            this.addChild(Dots);
+            // this.addChild(Dots); // Unrem this to show guilding dots.
             this.addChild(Drawing);
         }
 
@@ -29,14 +29,19 @@ class GameMgr extends PIXI.Container
 
     Update(deltaTime)
     {
+        if (Dots.isFinished)
+        {
+            Drawing.ClearDrawing();
+            Picture.ShowPictureFull();
+        }
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     TouchHandler(event)
     {
-        Drawing.TouchHandler(event);
         Dots.TouchHandler(event);
+        Drawing.TouchHandler(event);
     }
 };
 
