@@ -1,6 +1,6 @@
 class Dot extends PIXI.Container
 {
-    constructor(dot, dotSize)
+    constructor(dot)
     {
         super();
 
@@ -9,9 +9,9 @@ class Dot extends PIXI.Container
 
         this.rect = new PIXI.Graphics()
             .beginFill(0xFF0000)
-            .drawRect(0, 0, dotSize, dotSize)
+            .drawRect(0, 0, dot.size, dot.size)
             .endFill();
-        this.rect.position.set(APP.GetWidth() / 2 + dot.x - dotSize / 2, APP.GetHeight() / 2 + dot.y - dotSize / 2);
+        this.rect.position.set(APP.GetWidth() / 2 + dot.x - dot.size / 2, APP.GetHeight() / 2 + dot.y - dot.size / 2);
         this.addChild(this.rect);
     }
 

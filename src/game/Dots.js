@@ -18,10 +18,9 @@ class Dots extends PIXI.Container
     InitDots(name)
     {
         let dots = DataDefine.dots[name];
-        let dotSize = 30;
         dots.forEach(dot =>
         {
-            let node = new Dot(dot, dotSize);
+            let node = new Dot(dot);
             this.addChild(node);
 
             // Linked List

@@ -26,11 +26,11 @@ class GameMgr extends PIXI.Container
         if (this.children.length == 0)
         {
             this.addChild(Picture);
-            // this.addChild(Dots); // Unrem this to show guilding dots.
+            this.addChild(Dots); // Unrem this to show guilding dots.
             this.addChild(Drawing);
         }
 
-        let name = 'bee'; // Random picture name
+        let name = 'monkey'; // Random picture name
         Picture.InitPicture(name);
         Dots.InitDots(name);
 
